@@ -9,6 +9,9 @@ class SortingRobot:
         self._light = "OFF"     # The state of the robot's light
         self._time = 0          # A time counter (stretch)
 
+    def get_list_length(self):
+        return len(self._list)
+
     def can_move_right(self):
         """
         Returns True if the robot can move right or False if it's
@@ -96,7 +99,7 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        for i in range(len(self._list)):
+        for i in range(self.get_list_length()):
             # for x in range(self.position)
             while(self.can_move_left()):
                 self.move_left()
@@ -115,12 +118,6 @@ class SortingRobot:
                     self.move_left()
                     self.swap_item()
                     self.move_right()
-                # elif self.compare_item() == None and self._item is not None:
-                #     self.move_left()
-                #     self.swap_item()
-                #     self.move_right()
-                # elif self.compare_item() == None and self._item is None:
-                #     continue
                 else:
                     continue
                 
