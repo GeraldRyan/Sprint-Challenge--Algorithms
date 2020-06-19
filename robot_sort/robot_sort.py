@@ -96,10 +96,34 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        for i in range(len(self._list)):
+            for i in range(self._position):
+                self.move_left()
+            for j in range(len(self._list)):
+                self.swap_item() # pick up item at i index
+                self.move_right()
+                if self.compare_item() is None and self._item is not None:
+                    self.swap_item()
+                elif self.compare_item() == 1: # item in hand bigger
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item() 
+                    self.move_right()
+                elif self.compare_item() == -1 or self.compare_item() ==0: # item in hand smaller
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                # elif self.compare_item() == None and self._item is not None:
+                #     self.move_left()
+                #     self.swap_item()
+                #     self.move_right()
+                # elif self.compare_item() == None and self._item is None:
+                #     continue
+                else:
+                    continue
+                
 
-
+ 
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
