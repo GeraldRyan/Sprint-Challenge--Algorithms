@@ -9,6 +9,9 @@ class SortingRobot:
         self._light = "OFF"     # The state of the robot's light
         self._time = 0          # A time counter (stretch)
 
+    def get_list_length(self):
+        return len(self._list)
+
     def can_move_right(self):
         """
         Returns True if the robot can move right or False if it's
@@ -96,10 +99,31 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # This is definitely like a bubble sort which is not very efficient
+        for i in range(self.get_list_length()): # need somethign to replace this line to ensure sufficiency. 
+            # for x in range(self.position)
+            while(self.can_move_left()):
+                self.move_left()
+            # for j in range(len(self._list)): Depricated
+            while(self.can_move_right()):
+                self.swap_item() # pick up item at i index
+                self.move_right()
+                if self.compare_item() is None and self._item is not None:
+                    self.swap_item()
+                elif self.compare_item() == 1: # item in hand bigger
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item() 
+                    self.move_right()
+                elif self.compare_item() == -1 or self.compare_item() ==0: # item in hand smaller
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                else:
+                    continue
+                
 
-
+ 
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
