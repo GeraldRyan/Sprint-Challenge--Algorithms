@@ -99,7 +99,8 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        for i in range(self.get_list_length()):
+        # This is definitely like a bubble sort which is not very efficient
+        for i in range(self.get_list_length()): # need somethign to replace this line to ensure sufficiency. 
             # for x in range(self.position)
             while(self.can_move_left()):
                 self.move_left()
