@@ -97,9 +97,11 @@ class SortingRobot:
         Sort the robot's list.
         """
         for i in range(len(self._list)):
-            for i in range(self._position):
+            # for x in range(self.position)
+            while(self.can_move_left()):
                 self.move_left()
-            for j in range(len(self._list)):
+            # for j in range(len(self._list)): Depricated
+            while(self.can_move_right()):
                 self.swap_item() # pick up item at i index
                 self.move_right()
                 if self.compare_item() is None and self._item is not None:
